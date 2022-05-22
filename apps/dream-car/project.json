@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/dream-car",
         "index": "apps/dream-car/src/index.html",
@@ -17,7 +19,9 @@
           "apps/dream-car/src/favicon.ico",
           "apps/dream-car/src/assets"
         ],
-        "styles": ["apps/dream-car/src/styles.scss"],
+        "styles": [
+          "apps/dream-car/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -39,6 +43,14 @@
               "replace": "apps/dream-car/src/environments/environment.ts",
               "with": "apps/dream-car/src/environments/environment.prod.ts"
             }
+          ],
+          "externalDependencies": [
+            "@nestjs/microservices",
+            "@nestjs/platform-express",
+            "class-transformer",
+            "class-validator",
+            "cache-manager",
+            "util"
           ],
           "outputHashing": "all"
         },
@@ -85,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/dream-car"],
+      "outputs": [
+        "coverage/apps/dream-car"
+      ],
       "options": {
         "jestConfig": "apps/dream-car/jest.config.ts",
         "passWithNoTests": true
