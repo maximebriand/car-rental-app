@@ -42,7 +42,7 @@ export class AuthController {
       email: user.email,
     };
     const token = await this.authService.signPayload(payload);
-    return {user, token};
+    return {...user, token};
   }
 
 

@@ -9,3 +9,9 @@ export interface LoginDTO {
   password: string;
 }
 
+export interface LoginResponseDto {
+  email: string;
+  token: string;
+  role: string;
+}
+
