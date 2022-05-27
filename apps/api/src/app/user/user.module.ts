@@ -6,7 +6,6 @@ import {UserSchema} from "@dream-car/api-schemas";
 @Module({
   imports: [
     MongooseModule.forFeature([{name: 'User', schema: UserSchema}]),
-
   ],
   providers: [UserService],
   controllers: [],
