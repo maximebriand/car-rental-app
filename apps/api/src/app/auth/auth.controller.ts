@@ -2,7 +2,7 @@ import {Body, Controller, Get, Post, UseGuards} from '@nestjs/common';
 import {AuthGuard} from '@nestjs/passport/dist/auth.guard';
 import {AuthService} from './auth.service';
 import {UserService} from "../user/user.service";
-import {LoginDTO, RegisterDTO} from "@dream-car/api-interfaces";
+import {Login, Register} from "@dream-car/api-interfaces";
 
 @Controller('auth')
 export class AuthController {
@@ -25,8 +25,8 @@ export class AuthController {
   }
 
   @Post('register')
-  async register(@Body() registerDTO: RegisterDTO) {
-    const user = await this.userService.create(registerDTO);
+  async register(@Body() register: Register) {
+    const user = await this.userService.create(register);
     const payload = {
       email: user.email,
     };
@@ -36,7 +36,7 @@ export class AuthController {
   }
 
   @Post('login')
-  async login(@Body() loginDTO: LoginDTO) {
+  async login(@Body() loginDTO: Login) {
     const user = await this.userService.findByLogin(loginDTO);
     const payload = {
       email: user.email,

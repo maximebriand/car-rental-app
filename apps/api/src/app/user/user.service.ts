@@ -3,7 +3,7 @@ import {InjectModel} from '@nestjs/mongoose';
 import {Model} from 'mongoose';
 
 import * as bcrypt from 'bcrypt';
-import {LoginDTO, Payload, RegisterDTO, ROLES, User} from "@dream-car/api-interfaces";
+import {Login, Payload, Register, ROLES, User} from "@dream-car/api-interfaces";
 
 
 @Injectable()
@@ -14,14 +14,14 @@ export class UserService {
   ) {
   }
 
-  async create(RegisterDTO: RegisterDTO, role: string = ROLES.Customer) {
-    const {email} = RegisterDTO;
+  async create(Register: Register, role: string = ROLES.Customer) {
+    const {email} = Register;
     const user = await this.userModel.findOne({email});
     if (user) {
       throw new HttpException('user already exists', HttpStatus.BAD_REQUEST);
     }
 
-    const createdUser = new this.userModel(RegisterDTO);
+    const createdUser = new this.userModel(Register);
     createdUser.role = role;
 
     await createdUser.save();
@@ -33,7 +33,7 @@ export class UserService {
     return await this.userModel.findOne({email});
   }
 
-  async findByLogin(UserDTO: LoginDTO) {
+  async findByLogin(UserDTO: Login) {
     const {email, password} = UserDTO;
     const user = await this.userModel.findOne({email});
     if (!user) {

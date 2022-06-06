@@ -1,17 +1,17 @@
 import {Injectable} from "@angular/core";
 import {createState, select, Store, withProps} from '@ngneat/elf';
-import {LoginResponseDto, ROLES} from "@dream-car/api-interfaces";
+import {LoginResponse, ROLES} from "@dream-car/api-interfaces";
 import {map, Observable} from "rxjs";
 
 
 interface AuthProps {
-  user: LoginResponseDto | null;
+  user: LoginResponse | null;
 }
 
 @Injectable({providedIn: 'root'})
 export class AuthRepository {
   private authStore!: Store;
-  private readonly _user$!: Observable<LoginResponseDto>;
+  private readonly _user$!: Observable<LoginResponse>;
 
   constructor() {
     const {state, config} = createState(withProps<AuthProps>({
@@ -32,7 +32,7 @@ export class AuthRepository {
 
   get token$(): Observable<string> {
     return this._user$.pipe(
-      map((user: LoginResponseDto) => user.token)
+      map((user: LoginResponse) => user.token)
     );
   }
 
