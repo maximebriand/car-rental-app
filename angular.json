@@ -5,9 +5,9 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "api-schemas": "libs/api-schemas",
-    "interceptor": "libs/interceptor",
     "dream-car": "apps/dream-car",
     "dream-car-e2e": "apps/dream-car-e2e",
+    "interceptor": "libs/interceptor",
     "services": "libs/services"
   }
 }
